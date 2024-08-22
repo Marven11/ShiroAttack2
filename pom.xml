@@ -67,7 +67,7 @@
                     <target>8</target>
                     <encoding>UTF-8</encoding>
                     <compilerArguments>
-                        <bootclasspath>D:/java/jre/lib/rt.jar;D:/java/jre/lib/jce.jar</bootclasspath>
+                        <bootclasspath>/nix/store/mrn8l7fz1425chb16klnwhlfb0mfbi5k-openjdk-8u362-ga/lib/openjdk/jre/lib/rt.jar:/nix/store/mrn8l7fz1425chb16klnwhlfb0mfbi5k-openjdk-8u362-ga/lib/openjdk/jre/lib/jce.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>
             </plugin>
@@ -81,7 +81,10 @@
                             <mainClass>com.summersec.attack.UI.Main</mainClass>
                         </manifest>
                     </archive>
-                    <descriptor>assembly.xml</descriptor>
+
+                    <descriptors>
+                      <descriptor>assembly.xml</descriptor>
+                    </descriptors>
                 </configuration>
                 <executions>
                     <execution>
@@ -111,6 +114,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>13</version>
+        </dependency>
+
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.2</version>
@@ -122,6 +137,11 @@
             <version>3.2.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
 
 
         <!--commons-collections4-4.0.jar-->
