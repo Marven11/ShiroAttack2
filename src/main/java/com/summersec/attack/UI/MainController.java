@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -195,8 +197,18 @@ public class MainController {
     @FXML
     void crackKeyBtn(ActionEvent event) {
         this.initAttack();
+        AttackService service = this.attackService;
+        // 修复在高刷新率屏幕下的崩溃问题
         if (this.attackService.checkIsShiro()) {
-            this.attackService.keysCrack();
+            Platform.runLater(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    service.keysCrack();
+                }
+            });
+
         }
 
     }
